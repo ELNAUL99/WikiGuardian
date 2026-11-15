@@ -1,0 +1,183 @@
+/* WikiGuardianpedia - MediaWiki "Vector"-inspired skin (demo) */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #202122;
+  background: #f8f9fa;
+}
+
+a { color: #3366cc; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.muted { color: #72777d; }
+
+#personal-bar {
+  background: #f8f9fa;
+  border-bottom: 1px solid #eaecf0;
+  padding: 4px 16px;
+  font-size: 12px;
+  text-align: right;
+}
+#personal-bar a { margin-left: 12px; }
+#personal-bar .muted { margin-right: 8px; }
+
+#masthead {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 10px 16px;
+  background: #fff;
+  border-bottom: 1px solid #a2a9b1;
+}
+#brand { display: flex; align-items: center; gap: 12px; color: inherit; }
+#brand:hover { text-decoration: none; }
+#wordmark b { font-size: 20px; font-family: Georgia, "Linux Libertine", serif; }
+#wordmark .pedia { font-weight: normal; }
+#wordmark small { display: block; color: #72777d; font-size: 11px; }
+
+#searchbar { margin-left: auto; display: flex; }
+#searchbar input {
+  width: 320px; max-width: 40vw;
+  padding: 6px 8px;
+  border: 1px solid #a2a9b1; border-right: none;
+  border-radius: 2px 0 0 2px;
+}
+#searchbar button {
+  padding: 6px 12px;
+  border: 1px solid #a2a9b1;
+  background: #f8f9fa; cursor: pointer;
+  border-radius: 0 2px 2px 0;
+}
+
+#layout { display: flex; align-items: flex-start; gap: 0; }
+
+#sidebar {
+  width: 170px;
+  flex: 0 0 170px;
+  padding: 16px 10px 40px;
+  font-size: 12.5px;
+}
+.portlet { margin-bottom: 18px; }
+.portlet h3 {
+  color: #54595d; font-size: 11px; font-weight: normal;
+  text-transform: none; margin: 0 0 4px; padding-left: 6px;
+}
+.portlet ul { list-style: none; margin: 0; padding: 0; }
+.portlet li { padding: 2px 6px; }
+#article-list a.active { font-weight: bold; color: #202122; }
+
+#content {
+  flex: 1;
+  background: #fff;
+  border: 1px solid #a2a9b1;
+  border-top: none;
+  padding: 12px 24px 40px;
+  min-height: 70vh;
+  min-width: 0;
+}
+
+#tabs {
+  display: flex; justify-content: space-between;
+  border-bottom: 1px solid #a2a9b1;
+  margin: -12px -24px 14px; padding: 0 16px;
+  background: #f8f9fa;
+}
+.tab {
+  display: inline-block; padding: 8px 12px; cursor: pointer;
+  font-size: 13px; color: #3366cc; border: 1px solid transparent; border-bottom: none;
+}
+.tab.active { background: #fff; color: #202122; border-color: #a2a9b1; position: relative; top: 1px; }
+.tab:hover:not(.active) { background: #fff; }
+
+#article-title {
+  font-family: Georgia, "Linux Libertine", serif;
+  font-weight: normal; font-size: 28px;
+  border-bottom: 1px solid #a2a9b1; padding-bottom: 4px; margin: 0 0 4px;
+}
+#guardian-badge {
+  display: inline-block; background: #eafaf1; border: 1px solid #2e7d32;
+  color: #1b5e20; border-radius: 3px; padding: 2px 8px; font-size: 12px; margin: 6px 0;
+}
+#from-line { font-size: 12px; margin-bottom: 14px; }
+
+#read-view { line-height: 1.6; }
+#read-view h2 {
+  font-family: Georgia, "Linux Libertine", serif; font-weight: normal;
+  font-size: 21px; border-bottom: 1px solid #a2a9b1; padding-bottom: 3px; margin: 20px 0 8px;
+}
+#read-view p { margin: 0 0 12px; }
+
+/* Edit view */
+#edit-view label { display: block; margin: 10px 0 4px; font-weight: bold; font-size: 13px; }
+#edit-view input[type=text] { width: 360px; max-width: 100%; padding: 6px 8px; border: 1px solid #a2a9b1; }
+.edit-note {
+  background: #fef6e7; border: 1px solid #fc3; border-radius: 2px;
+  padding: 10px 12px; margin-bottom: 12px; font-size: 13px;
+}
+#edit-text {
+  width: 100%; height: 300px; margin-top: 10px;
+  font-family: monospace; font-size: 13px; line-height: 1.5;
+  padding: 10px; border: 1px solid #a2a9b1;
+}
+.edit-actions { margin-top: 12px; }
+#edit-view button, #save-btn {
+  background: #3366cc; color: #fff; border: 1px solid #2a4b8d;
+  padding: 8px 16px; border-radius: 2px; cursor: pointer; font-size: 14px;
+}
+#edit-view button.secondary { background: #f8f9fa; color: #202122; border-color: #a2a9b1; margin-left: 8px; }
+
+#foot {
+  margin: 30px 16px; padding-top: 12px; border-top: 1px solid #c8ccd1;
+  color: #72777d; font-size: 12px;
+}
+
+/* Overlay */
+#overlay[hidden] { display: none; }
+#overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.45);
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 6vh 16px; z-index: 50;
+}
+#overlay-card {
+  background: #fff; width: 620px; max-width: 100%;
+  border-radius: 6px; box-shadow: 0 12px 40px rgba(0,0,0,.3);
+  padding: 20px 22px; max-height: 86vh; overflow: auto;
+}
+#overlay-head { display: flex; align-items: center; gap: 12px; }
+#overlay-head .robot { font-size: 30px; }
+#overlay-title { font-size: 17px; font-weight: bold; }
+#overlay-close {
+  margin-left: auto; background: #f8f9fa; border: 1px solid #a2a9b1;
+  border-radius: 2px; padding: 6px 12px; cursor: pointer;
+}
+#signal-line {
+  margin: 14px 0 6px; padding: 8px 10px; border-radius: 4px;
+  background: #f1f3f6; font-size: 13px;
+}
+#signal-line.contested { background: #fdecea; border: 1px solid #c62828; color: #7f1d1d; }
+
+#progress-log { list-style: none; margin: 10px 0 0; padding: 0; font-size: 13px; }
+#progress-log li { padding: 5px 0 5px 24px; position: relative; color: #54595d; }
+#progress-log li::before { content: "\23F3"; position: absolute; left: 0; }
+#progress-log li.done::before { content: "\2713"; color: #2e7d32; }
+#progress-log li.claim { color: #202122; font-weight: 600; }
+#progress-log li.claim::before { content: "\2696"; }
+
+#verdict { margin-top: 16px; padding: 16px 18px; border-radius: 8px; }
+#verdict.blocked { background: #fdecea; border: 2px solid #c62828; }
+#verdict.pass { background: #eafaf1; border: 2px solid #2e7d32; }
+#verdict h2 { margin: 0 0 6px; font-size: 18px; }
+#verdict.blocked h2 { color: #b71c1c; }
+#verdict.pass h2 { color: #1b5e20; }
+.badge { display:inline-block; color:#fff; border-radius:4px; padding:1px 8px; font-size:12px; margin-right:6px; }
+.badge.contradicted { background:#c62828; }
+.badge.supported { background:#2e7d32; }
+.badge.insufficient_evidence { background:#f9a825; }
+
+@media (max-width: 760px) {
+  #sidebar { display: none; }
+  #searchbar input { width: 140px; }
+}

@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>WikiGuardianpedia</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div id="personal-bar">
+    <span class="muted">Not logged in</span>
+    <a href="#">Talk</a><a href="#">Contributions</a>
+    <a href="#">Create account</a><a href="#">Log in</a>
+  </div>
+
+  <header id="masthead">
+    <a id="brand" href="/">
+      <span id="globe" aria-hidden="true">
+        <svg viewBox="0 0 100 100" width="50" height="50">
+          <circle cx="50" cy="50" r="46" fill="#f8f9fa" stroke="#a2a9b1" stroke-width="2"/>
+          <ellipse cx="50" cy="50" rx="46" ry="20" fill="none" stroke="#c8ccd1"/>
+          <ellipse cx="50" cy="50" rx="20" ry="46" fill="none" stroke="#c8ccd1"/>
+          <line x1="4" y1="50" x2="96" y2="50" stroke="#c8ccd1"/>
+          <line x1="50" y1="4" x2="50" y2="96" stroke="#c8ccd1"/>
+          <circle cx="50" cy="50" r="6" fill="#2e7d32"/>
+        </svg>
+      </span>
+      <span id="wordmark">
+        <b>WikiGuardian<span class="pedia">pedia</span></b>
+        <small>The guarded encyclopedia &middot; demo</small>
+      </span>
+    </a>
+    <div id="searchbar">
+      <input type="text" placeholder="Search WikiGuardianpedia" aria-label="Search" />
+      <button type="button">Search</button>
+    </div>
+  </header>
+
+  <div id="layout">
+    <nav id="sidebar">
+      <div class="portlet">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="#">Main page</a></li>
+          <li><a href="#">Contents</a></li>
+          <li><a href="#">Current events</a></li>
+          <li><a href="#">Random article</a></li>
+        </ul>
+      </div>
+      <div class="portlet">
+        <h3>Demo articles</h3>
+        <ul id="article-list"></ul>
+      </div>
+      <div class="portlet">
+        <h3>Tools</h3>
+        <ul>
+          <li><a href="#">What links here</a></li>
+          <li><a href="#">Page information</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main id="content">
+      <div id="tabs">
+        <div class="tabs-left">
+          <span class="tab active">Article</span>
+          <span class="tab">Talk</span>
+        </div>
+        <div class="tabs-right">
+          <span class="tab" id="tab-read">Read</span>
+          <span class="tab" id="tab-edit">Edit</span>
+          <span class="tab">View history</span>
+        </div>
+      </div>
+
+      <h1 id="article-title">Loading&hellip;</h1>
+      <div id="guardian-badge">&#128737; Protected by WikiGuardian</div>
+      <div id="from-line" class="muted">From WikiGuardianpedia, the guarded encyclopedia (demo)</div>
+
+      <!-- READ VIEW -->
+      <article id="read-view"></article>
+
+      <!-- EDIT VIEW -->
+      <section id="edit-view" hidden>
+        <div class="edit-note">
+          You are editing the <b>lead section</b>. Try sneaking in a false fact
+          (for example, change a date) and save &mdash; WikiGuardian checks the
+          article's own revision history and real-world sources before anything
+          goes live.
+        </div>
+        <label>Editor name
+          <input type="text" id="editor-name" value="Anonymous editor" />
+        </label>
+        <label>Edit summary
+          <input type="text" id="edit-summary" placeholder="Briefly describe your change" />
+        </label>
+        <textarea id="edit-text" spellcheck="false"></textarea>
+        <div class="edit-actions">
+          <button id="save-btn" type="button">Save changes</button>
+          <button id="cancel-btn" type="button" class="secondary">Cancel</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- WIKIGUARDIAN OVERLAY -->
+  <div id="overlay" hidden>
+    <div id="overlay-card">
+      <div id="overlay-head">
+        <span class="robot">&#128737;</span>
+        <div>
+          <div id="overlay-title">WikiGuardian is verifying this edit&hellip;</div>
+          <div id="overlay-sub" class="muted">Checking past data and real-world sources before publishing.</div>
+        </div>
+        <button id="overlay-close" type="button" hidden>Close</button>
+      </div>
+      <div id="signal-line" hidden></div>
+      <ul id="progress-log"></ul>
+      <div id="verdict" hidden></div>
+    </div>
+  </div>
+
+  <footer id="foot">
+    WikiGuardian &middot; AI-assisted verification &middot; Final publication
+    decisions remain with human reviewers.
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
